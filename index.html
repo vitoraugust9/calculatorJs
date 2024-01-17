@@ -1,67 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main>
-      <div class="calculator">
-        <div class="display">
-          <p class="operation"></p>
-          <h3 class="displayed"></h3>
+  <!DOCTYPE html>
+  <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Calculator</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <main>
+        <div class="calculator">
+          <div class="display">
+            <p class="operation">99</p>
+            <h3 class="displayed">99</h3>
+          </div>
+          <div class="section-buttons">
+
+
+            <button id="toggle-theme" onclick="toggleTheme()">
+              <img id='theme' src="./public/light.svg" />
+            </button>
+
+
+            <button class="operator">
+              <img id='percent' src="public/percent.svg" onclick="addition()"/>
+            </button>
+
+            <button class="operator">
+              <img id='divide' src="public/divide.svg" onclick="division()"/>
+            </button>
+
+            <button class="operator">
+              <img id='multiply' src="public/multiply.svg" onclick="multiplication()"/>
+            </button>
+
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">
+              <img id='minus' src="public/minus.svg" onclick="subtraction()"/>
+            </button>
+
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">
+              <img id='plus' src="public/plus.svg" />
+            </button>
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="equal">
+              <img src="public/equal.svg" onclick="showResult()"/>
+            </button>
+
+            <button class="clear-display button-gradient" onclick="toggleButton()">C</button>
+            <button class="stop-operation button-gradient" onclick="toggleButton()">AC</button>
+            <button>0</button>
+            <button>.</button>
+          </div>
         </div>
-        <div class="section-buttons">
+      </main>
 
-
-          <button class="toggle-theme" onclick="toggleTheme()">
-            <img src="./public/dark.svg" />
-          </button>
-
-
-          <button>
-            <img src="public/percent.svg" onclick="addition()"/>
-          </button>
-
-          <button>
-            <img src="public/divide.svg" onclick="division()"/>
-          </button>
-
-          <button>
-            <img src="public/multiply.svg" onclick="multiplication()"/>
-          </button>
-
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>
-            <img src="public/minus.svg" onclick="subtraction()"/>
-          </button>
-
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>
-            <img src="public/plus.svg" />
-          </button>
-
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button class="equal">
-            <img src="public/equal.svg" onclick="showResult()"/>
-          </button>
-
-          <button class="clear-display button-gradient" onclick="clearCurrentInput()">AC</button>
-          <button class="stop-operation button-gradient" onclick="stopOperation()">C</button>
-          <button>0</button>
-          <button>,</button>
-        </div>
-      </div>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
-</html>
+      <script src="script.js"></script>
+    </body>
+  </html>
