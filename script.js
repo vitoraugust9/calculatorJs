@@ -1,3 +1,4 @@
+
 let defaultTheme = window.matchMedia("(prefers-color-scheme: dark)");
 let imgTheme = document.getElementById("theme");
 
@@ -28,13 +29,6 @@ defaultTheme.addEventListener("change", (e) => {
     setDarkTheme();
   }
 });
-
-
-
-
-
-
-
 
 
 
@@ -94,3 +88,8 @@ function toggleButton() {
     clearDisplayButton.style.display = 'none';
   }
 }
+
+
+
+
+

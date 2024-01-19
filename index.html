@@ -1,67 +1,80 @@
-  <!DOCTYPE html>
-  <html lang="pt-br">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Calculator</title>
-      <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-      <main>
-        <div class="calculator">
-          <div class="display">
-            <p class="operation">77</p>
-            <h3 class="displayed">77</h3>
-          </div>
-          <div class="section-buttons">
-
-
-            <button id="toggle-theme" onclick="toggleTheme()">
-              <img id='theme' src="./public/light.svg" />
-            </button>
-
-
-            <button class="operator">
-              <img id='percent' src="public/percent.svg" onclick="percent()"/>
-            </button>
-
-            <button class="operator">
-              <img id='divide' src="public/divide.svg" onclick="division()"/>
-            </button>
-
-            <button class="operator">
-              <img id='multiply' src="public/multiply.svg" onclick="multiplication()"/>
-            </button>
-
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="operator">
-              <img id='minus' src="public/minus.svg" onclick="subtraction()"/>
-            </button>
-
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="operator">
-              <img id='plus' src="public/plus.svg" onclick="addition()" />
-            </button>
-
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="equal">
-              <img src="public/equal.svg" onclick="showResult()"/>
-            </button>
-
-            <button class="clear-display button-gradient" onclick="toggleButton()">C</button>
-            <button class="stop-operation button-gradient" onclick="toggleButton()">AC</button>
-            <button>0</button>
-            <button>.</button>
-          </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Calculadora simples para operações matemáticas."
+    />
+    <meta
+      name="keywords"
+      content="calculadora, operações matemáticas, matemática, calcular"
+    />
+    
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="calculator">
+        <div class="display">
+          <p class="operation" aria-live="polite">77</p>
+          <p class="displayed">777</p>
         </div>
-      </main>
+        <div class="section-buttons">
+          <button tabindex="0" id="toggle-theme" onclick="toggleTheme()" aria-label="Toggle Theme">
+            <img id="theme" src="./public/light.svg" alt="Theme Icon" />
+          </button>
 
-      <script src="script.js"></script>
-    </body>
-  </html>
+          <button tabindex="1" class="operator" aria-label="Percentage" onclick="percent()">
+            <img id="percent" src="public/percent.svg" alt="Percentage Icon" />
+          </button>
+
+          <button tabindex="2" class="operator" aria-label="Divide" onclick="division()">
+            <img id="divide" src="public/divide.svg" alt="Divide Icon" />
+          </button>
+
+          <button tabindex="3" class="operator" aria-label="Multiply" onclick="multiplication()">
+            <img id="multiply" src="public/multiply.svg" alt="Multiply Icon" />
+          </button>
+
+          <button tabindex="4" aria-label="Number 7" onclick="appendNumber(7)">7</button>
+          <button tabindex="5" aria-label="Number 8" onclick="appendNumber(8)">8</button>
+          <button tabindex="6" aria-label="Number 9" onclick="appendNumber(9)">9</button>
+          <button tabindex="7" class="operator" aria-label="Subtraction" onclick="subtraction()">
+            <img id="minus" src="public/minus.svg" alt="Minus Icon" />
+          </button>
+
+          <button tabindex="8" aria-label="Number 4" onclick="appendNumber(4)">4</button>
+          <button tabindex="9" aria-label="Number 5" onclick="appendNumber(5)">5</button>
+          <button tabindex="10" aria-label="Number 6" onclick="appendNumber(6)">6</button>
+          <button tabindex="11" class="operator" aria-label="Addition" onclick="addition()">
+            <img id="plus" src="public/plus.svg" alt="Plus Icon" />
+          </button>
+
+          <button tabindex="12" aria-label="Number 1" onclick="appendNumber(1)">1</button>
+          <button tabindex="13" aria-label="Number 2" onclick="appendNumber(2)">2</button>
+          <button tabindex="14" aria-label="Number 3" onclick="appendNumber(3)">3</button>
+          <button tabindex="15" class="equal" aria-label="Equals" onclick="showResult()">
+            <img src="public/equal.svg" alt="Equal Icon" />
+          </button>
+
+          <button tabindex="16" class="clear-display button-gradient" onclick="toggleButton()" aria-label="Clear">
+            C
+          </button>
+
+          <button tabindex="17" class="stop-operation button-gradient" onclick="toggleButton()" aria-label="All Clear">
+            AC
+          </button>
+
+          <button tabindex="18" aria-label="Number 0" onclick="appendNumber(0)">0</button>
+          <button tabindex="19" aria-label="Decimal Point" onclick="appendDecimal()">.</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
