@@ -20,8 +20,8 @@
     <main>
       <div class="calculator">
         <div class="display">
-          <p class="operation" aria-live="polite">77</p>
-          <p class="displayed">777</p>
+          <p class="operation" aria-live="polite"></p>
+          <p class="displayed"></p>
         </div>
         <div class="section-buttons">
           <button tabindex="0" id="toggle-theme" onclick="toggleTheme()" aria-label="Toggle Theme">
@@ -40,23 +40,23 @@
             <img id="multiply" src="public/multiply.svg" alt="Multiply Icon" />
           </button>
 
-          <button tabindex="4" aria-label="Number 7" onclick="appendNumber(7)">7</button>
-          <button tabindex="5" aria-label="Number 8" onclick="appendNumber(8)">8</button>
-          <button tabindex="6" aria-label="Number 9" onclick="appendNumber(9)">9</button>
+          <button tabindex="4" class="number" aria-label="Number 7" value="7">7</button>
+          <button tabindex="5" class="number" aria-label="Number 8" value="8">8</button>
+          <button tabindex="6" class="number" aria-label="Number 9" value="9">9</button>
           <button tabindex="7" class="operator" aria-label="Subtraction" onclick="subtraction()">
             <img id="minus" src="public/minus.svg" alt="Minus Icon" />
           </button>
 
-          <button tabindex="8" aria-label="Number 4" onclick="appendNumber(4)">4</button>
-          <button tabindex="9" aria-label="Number 5" onclick="appendNumber(5)">5</button>
-          <button tabindex="10" aria-label="Number 6" onclick="appendNumber(6)">6</button>
+          <button tabindex="8" class="number" aria-label="Number 4" value="4">4</button>
+          <button tabindex="9" class="number" aria-label="Number 5" value="5">5</button>
+          <button tabindex="10" class="number" aria-label="Number 6" value="6">6</button>
           <button tabindex="11" class="operator" aria-label="Addition" onclick="addition()">
             <img id="plus" src="public/plus.svg" alt="Plus Icon" />
           </button>
 
-          <button tabindex="12" aria-label="Number 1" onclick="appendNumber(1)">1</button>
-          <button tabindex="13" aria-label="Number 2" onclick="appendNumber(2)">2</button>
-          <button tabindex="14" aria-label="Number 3" onclick="appendNumber(3)">3</button>
+          <button tabindex="12" class="number" aria-label="Number 1" value="1">1</button>
+          <button tabindex="13" class="number" aria-label="Number 2" value="2">2</button>
+          <button tabindex="14" class="number" aria-label="Number 3" value="3">3</button>
           <button tabindex="15" class="equal" aria-label="Equals" onclick="showResult()">
             <img src="public/equal.svg" alt="Equal Icon" />
           </button>
@@ -69,12 +69,13 @@
             AC
           </button>
 
-          <button tabindex="18" aria-label="Number 0" onclick="appendNumber(0)">0</button>
-          <button tabindex="19" aria-label="Decimal Point" onclick="appendDecimal()">.</button>
+          <button tabindex="18" class="number" aria-label="Number 0" value='0'>0</button>
+          <button tabindex="19" class="float" aria-label="Decimal Point">.</button>
         </div>
       </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="dynamicStyles.js"></script>
+    <script src="calculatorDynamics.js"></script>
   </body>
 </html>

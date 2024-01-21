@@ -73,21 +73,7 @@ function setDarkTheme() {
 }
 
 
-function toggleButton() {
-  const stopOperationButton = document.querySelector('.stop-operation');
-  const clearDisplayButton = document.querySelector('.clear-display');
 
-
-  if (stopOperationButton.style.display === '' || stopOperationButton.style.display === 'block') {
-
-    stopOperationButton.style.display = 'none';
-    clearDisplayButton.style.display = 'block';
-  } else {
-
-    stopOperationButton.style.display = 'block';
-    clearDisplayButton.style.display = 'none';
-  }
-}
 
 
 
