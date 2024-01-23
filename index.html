@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta author="Vitor Augusto" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta
       name="description"
@@ -12,70 +13,105 @@
       name="keywords"
       content="calculadora, operações matemáticas, matemática, calcular"
     />
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
     <main>
       <div class="calculator">
         <div class="display">
-          <p class="operation" aria-live="polite"></p>
+          <p class="previous-operation"></p>
           <p class="displayed"></p>
         </div>
         <div class="section-buttons">
-          <button tabindex="0" id="toggle-theme" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <button
+            tabindex="0"
+            id="toggle-theme"
+            onclick="toggleTheme()"
+            aria-label="Toggle Theme"
+          ><p class="none">toggle</p>
             <img id="theme" src="./public/light.svg" alt="Theme Icon" />
           </button>
-
-          <button tabindex="1" class="operator" aria-label="Percentage" onclick="percent()">
-            <img id="percent" src="public/percent.svg" alt="Percentage Icon" />
+          <button tabindex="1" class="operator percent" aria-label="Percentage">
+            %
           </button>
 
-          <button tabindex="2" class="operator" aria-label="Divide" onclick="division()">
-            <img id="divide" src="public/divide.svg" alt="Divide Icon" />
+          <button tabindex="2" class="operator divide" aria-label="Divide">
+            /
           </button>
 
-          <button tabindex="3" class="operator" aria-label="Multiply" onclick="multiplication()">
-            <img id="multiply" src="public/multiply.svg" alt="Multiply Icon" />
+          <button tabindex="3" class="operator multiply" aria-label="Multiply">
+            *
           </button>
 
-          <button tabindex="4" class="number" aria-label="Number 7" value="7">7</button>
-          <button tabindex="5" class="number" aria-label="Number 8" value="8">8</button>
-          <button tabindex="6" class="number" aria-label="Number 9" value="9">9</button>
-          <button tabindex="7" class="operator" aria-label="Subtraction" onclick="subtraction()">
-            <img id="minus" src="public/minus.svg" alt="Minus Icon" />
+          <button tabindex="4" class="number" aria-label="Number 7" value="7">
+            7
+          </button>
+          <button tabindex="5" class="number" aria-label="Number 8" value="8">
+            8
+          </button>
+          <button tabindex="6" class="number" aria-label="Number 9" value="9">
+            9
+          </button>
+          <button tabindex="7" class="operator minus" aria-label="Subtraction">
+            -
           </button>
 
-          <button tabindex="8" class="number" aria-label="Number 4" value="4">4</button>
-          <button tabindex="9" class="number" aria-label="Number 5" value="5">5</button>
-          <button tabindex="10" class="number" aria-label="Number 6" value="6">6</button>
-          <button tabindex="11" class="operator" aria-label="Addition" onclick="addition()">
-            <img id="plus" src="public/plus.svg" alt="Plus Icon" />
+          <button tabindex="8" class="number" aria-label="Number 4" value="4">
+            4
+          </button>
+          <button tabindex="9" class="number" aria-label="Number 5" value="5">
+            5
+          </button>
+          <button tabindex="10" class="number" aria-label="Number 6" value="6">
+            6
+          </button>
+          <button tabindex="11" class="operator addition" aria-label="Addition">
+            +
           </button>
 
-          <button tabindex="12" class="number" aria-label="Number 1" value="1">1</button>
-          <button tabindex="13" class="number" aria-label="Number 2" value="2">2</button>
-          <button tabindex="14" class="number" aria-label="Number 3" value="3">3</button>
-          <button tabindex="15" class="equal" aria-label="Equals" onclick="showResult()">
-            <img src="public/equal.svg" alt="Equal Icon" />
+          <button tabindex="12" class="number" aria-label="Number 1" value="1">
+            1
           </button>
-
-          <button tabindex="16" class="clear-display button-gradient" onclick="toggleButton()" aria-label="Clear">
-            C
+          <button tabindex="13" class="number" aria-label="Number 2" value="2">
+            2
           </button>
-
-          <button tabindex="17" class="stop-operation button-gradient" onclick="toggleButton()" aria-label="All Clear">
-            AC
+          <button tabindex="14" class="number" aria-label="Number 3" value="3">
+            3
           </button>
+          <button tabindex="15" class="equal" aria-label="Equals">=</button>
 
-          <button tabindex="18" class="number" aria-label="Number 0" value='0'>0</button>
-          <button tabindex="19" class="float" aria-label="Decimal Point">.</button>
+          <button
+            tabindex="16"
+            class="clear-display button-gradient"
+            onclick="toggleButton()"
+            aria-label="Clear"
+          >C</button>
+
+          <button
+            tabindex="17"
+            class="stop-operation button-gradient"
+            onclick="toggleButton()"
+            aria-label="Clear All">AC</button>
+
+          <button tabindex="18" class="number" aria-label="Number 0" value="0">
+            0
+          </button>
+          <button tabindex="19" class="float" aria-label="Decimal Point">
+            .
+          </button>
         </div>
       </div>
     </main>
 
-    <script src="dynamicStyles.js"></script>
-    <script src="calculatorDynamics.js"></script>
+    <script src="scripts/calculatorDynamics.js"></script>
+    <script src="scripts/dynamicStyles.js"></script>
   </body>
 </html>
