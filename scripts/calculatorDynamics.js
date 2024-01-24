@@ -64,6 +64,7 @@ class Calculator {
       case "%":
         operationValue = current / 100;
         this.currentOperationText.innerText = operationValue;
+
         break;
     case "DEL":
       this.processDelOperator();
@@ -168,38 +169,52 @@ class Calculator {
 
 const calc = new Calculator(previousOperationText, currentOperationText);
 
-buttons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const value = e.target.innerText;
 
-    // Remover a classe 'active' de todos os botões antes de destacar o botão do operador
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
-    });
 
-    if (+value >= 0 || value === ".") {
-  
-      calc.addDigit(value);
-    } else {
-      calc.processOperation(value);
-      // Adicionar a classe 'active' ao botão do operador
-      calc.highlightOperatorButton(value);
-    }
-  });
-});
 
 function toggleButton() {
   const stopOperationButton = document.querySelector('.stop-operation');
   const clearDisplayButton = document.querySelector('.clear-display');
 
+  const isPreviousEmpty = calc.previousOperationText.innerText === '';
+  const isCurrentEmpty = calc.currentOperationText.innerText === '';
 
-  if (stopOperationButton.style.display === '' || stopOperationButton.style.display === 'block') {
-
-    stopOperationButton.style.display = 'none';
-    clearDisplayButton.style.display = 'block';
-  } else {
-
+  if (isPreviousEmpty && isCurrentEmpty) {
     stopOperationButton.style.display = 'block';
     clearDisplayButton.style.display = 'none';
+  } else {
+    stopOperationButton.style.display = 'none';
+    clearDisplayButton.style.display = 'block';
   }
 }
+
+// Event listener loop
+buttons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const value = e.target.innerText;
+
+    // Remove the 'active' class from all buttons before highlighting the operator button
+    buttons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    if (+value >= 0 || value === ".") {
+      calc.addDigit(value);
+    } else if (value === "%") {
+      // Perform the operation for the "%" button
+      calc.processOperation(value);
+
+      // Remove the 'active' class from the "%" button
+      btn.classList.remove("active");
+    } else {
+      // Perform the operation for other operators
+      calc.processOperation(value);
+
+      // Add the 'active' class to the operator button
+      calc.highlightOperatorButton(value);
+    }
+
+    // Call toggleButton after processing the button click
+    toggleButton();
+  });
+});
