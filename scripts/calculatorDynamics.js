@@ -19,8 +19,7 @@ class Calculator {
   }
   // add digit to calculator screen
   addDigit(digit) {
-    console.log(digit);
-    // Check if number already has a dot
+
     if (digit === "." && this.currentOperationText.innerText.includes(".")) {
       return;
     }
@@ -179,7 +178,7 @@ buttons.forEach((btn) => {
     });
 
     if (+value >= 0 || value === ".") {
-      console.log(value);
+  
       calc.addDigit(value);
     } else {
       calc.processOperation(value);
@@ -188,3 +187,19 @@ buttons.forEach((btn) => {
     }
   });
 });
+
+function toggleButton() {
+  const stopOperationButton = document.querySelector('.stop-operation');
+  const clearDisplayButton = document.querySelector('.clear-display');
+
+
+  if (stopOperationButton.style.display === '' || stopOperationButton.style.display === 'block') {
+
+    stopOperationButton.style.display = 'none';
+    clearDisplayButton.style.display = 'block';
+  } else {
+
+    stopOperationButton.style.display = 'block';
+    clearDisplayButton.style.display = 'none';
+  }
+}
