@@ -62,10 +62,10 @@ class Calculator {
       operationValue = previous / current;
       this.updateScreen(operationValue, operation, current, previous);
       break;
-    case "%":
-      operationValue = current / 100;
-      this.updateScreen(operationValue);
-      break;
+      case "%":
+        operationValue = current / 100;
+        this.currentOperationText.innerText = operationValue;
+        break;
     case "DEL":
       this.processDelOperator();
       break;
