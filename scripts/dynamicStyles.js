@@ -42,6 +42,7 @@ function setLightTheme() {
   document.documentElement.style.setProperty("--text-color", "#000");
   document.documentElement.style.setProperty("--button-color", "#e9e9e9");
   document.documentElement.style.setProperty("--toggle-color", "#e9e9e9");
+  document.documentElement.style.setProperty('--operator-active', '#cfcfcf')
 
 }
 
@@ -55,6 +56,7 @@ function setDarkTheme() {
   document.documentElement.style.setProperty("--text-color", "#fff");
   document.documentElement.style.setProperty("--button-color", "#323438");
   document.documentElement.style.setProperty("--toggle-color", "#323438");
+  document.documentElement.style.setProperty('--operator-active', "#1a1c1f")
 }
 
 

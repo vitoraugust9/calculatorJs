@@ -9,19 +9,41 @@ class Calculator {
     this.currentOperation = "";
   }
 
-  addDigit(digit) {
-    if (this.currentOperation.length < 11) {
-      if (digit === "." && this.currentOperationText.innerText.includes(".")) {
-        return;
+
+  highlightOperatorButton(operator) {
+    buttons.forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.innerText === operator) {
+        btn.classList.add("active");
       }
-      this.currentOperation += digit;
-      this.updateScreen();
+    });
+  }
+  // add digit to calculator screen
+  addDigit(digit) {
+    console.log(digit);
+    // Check if number already has a dot
+    if (digit === "." && this.currentOperationText.innerText.includes(".")) {
+      return;
     }
+
+    this.currentOperation = digit;
+    this.updateScreen();
   }
 
+  // process all calculator operations
   processOperation(operation) {
+    // Check if current value is empty
+    if (this.currentOperationText.innerText === "" && operation !== "C") {
+      // Change operation
+      if (this.previousOperationText.innerText !== "") {
+        this.changeOperation(operation);
+      }
+      return;
+    }
+
+    // Get current and previous values
     let operationValue;
-    let previous = +this.previousOperationText.innerText;
+    let previous = +this.previousOperationText.innerText.split(" ")[0];
     let current = +this.currentOperationText.innerText;
 
     switch (operation) {
@@ -29,30 +51,106 @@ class Calculator {
         operationValue = previous + current;
         this.updateScreen(operationValue, operation, current, previous);
         break;
+      case "-":
+        operationValue = previous - current;
+        this.updateScreen(operationValue, operation, current, previous);
+        break;
+      case "*":
+        operationValue = previous * current;
+        this.updateScreen(operationValue, operation, current, previous);
+        break;
+      case "/":
+        operationValue = previous / current;
+        this.updateScreen(operationValue, operation, current, previous);
+        break;
 
+      case "%":
+        operationValue = current / 100;
+        this.updateScreen(operationValue)
+        break
+      case "DEL":
+        this.processDelOperator();
+        break;
+      case "CE":
+        this.processClearCurrentOperator();
+        break;
+      case "C":
+        this.processClearOperator();
+        break;
+      case "=":
+        this.processEqualOperator();
+        break;
       default:
         return;
     }
   }
 
-  updateScreen(
-    operationValue = null,
-    operation = null,
-    current = null,
-    previous = null
-  ) {
-    console.log(operationValue, operation, current, previous);
-    if (operationValue === null) {
-      this.currentOperationText.innerText = this.currentOperation;
+  // Change values of calculator screen
+  updateScreen(operationValue = null, operation = null, current = null, previous = null) {
+  if (operationValue === null) {
+    // Append number to current value
+    this.currentOperationText.innerText += this.currentOperation;
+  } else {
+    // Check if value is zero, if it is, just add the current value
+    if (previous === 0) {
+      operationValue = current;
+    }
+
+    // Adiciona o resultado imediatamente para o operador %
+    if (operation === "%" && operationValue !== null) {
+      this.currentOperationText.innerText = operationValue !== null ? operationValue : "";
     } else {
-      if (previous === 0) {
-        operationValue = current;
-      }
-      this.previousOperationText.innerText = `${operationValue} ${operation}`;
-      this.currentOperationText.innerText = ""
+      // Add current value to previous
+      this.previousOperationText.innerText = operationValue !== null ? `${operationValue} ${operation}` : "";
+      this.currentOperationText.innerText = operationValue !== null ? "" : this.currentOperationText.innerText;
     }
   }
 }
+
+  // Change math operation
+  changeOperation(operation) {
+    const mathOperations = ["*", "-", "+", "/"];
+
+    if (!mathOperations.includes(operation)) {
+      return;
+    }
+
+    this.previousOperationText.innerText =
+      this.previousOperationText.innerText.slice(0, -1) + operation;
+  }
+
+  // Delete a digit
+  processDelOperator() {
+    this.currentOperationText.innerText =
+      this.currentOperationText.innerText.slice(0, -1);
+  }
+
+  // Clear current operation
+  processClearCurrentOperator() {
+    this.currentOperationText.innerText = "";
+  }
+
+  // Clear all operations
+  processClearOperator() {
+    this.currentOperationText.innerText = "";
+    this.previousOperationText.innerText = "";
+  }
+
+  // Process an operation
+  // Process an operation
+processEqualOperator() {
+  let operationText = this.previousOperationText.innerText;
+  let operation = "";
+
+  if (operationText.includes(" ")) {
+    operation = operationText.split(" ")[1];
+  }
+
+  this.processOperation(operation);
+}
+
+}
+
 
 const calc = new Calculator(previousOperationText, currentOperationText);
 
@@ -60,35 +158,18 @@ buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const value = e.target.innerText;
 
+    // Remover a classe 'active' de todos os botões antes de destacar o botão do operador
+    buttons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
     if (+value >= 0 || value === ".") {
-      // Se for um botão de número ou ponto decimal
+      console.log(value);
       calc.addDigit(value);
-    } else if (value !== "AC" || value !== "C" || value !== "toggle") {
+    } else {
       calc.processOperation(value);
+      // Adicionar a classe 'active' ao botão do operador
+      calc.highlightOperatorButton(value);
     }
   });
 });
-
-function calculateResult(previous, current) {
-  try {
-    return eval(previous + current);
-  } catch (error) {
-    return "Erro na expressão";
-  }
-}
-
-function toggleButton() {
-  const stopOperationButton = document.querySelector(".stop-operation");
-  const clearDisplayButton = document.querySelector(".clear-display");
-
-  if (
-    stopOperationButton.style.display === "" ||
-    stopOperationButton.style.display === "block"
-  ) {
-    stopOperationButton.style.display = "none";
-    clearDisplayButton.style.display = "block";
-  } else {
-    stopOperationButton.style.display = "block";
-    clearDisplayButton.style.display = "none";
-  }
-}
