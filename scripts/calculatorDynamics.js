@@ -9,7 +9,6 @@ class Calculator {
     this.currentOperation = "";
   }
 
-
   highlightOperatorButton(operator) {
     buttons.forEach((btn) => {
       btn.classList.remove("active");
@@ -33,7 +32,7 @@ class Calculator {
   // process all calculator operations
   processOperation(operation) {
     // Check if current value is empty
-    if (this.currentOperationText.innerText === "" && operation !== "C") {
+    if (this.currentOperationText.innerText === "") {
       // Change operation
       if (this.previousOperationText.innerText !== "") {
         this.changeOperation(operation);
@@ -66,12 +65,12 @@ class Calculator {
 
       case "%":
         operationValue = current / 100;
-        this.updateScreen(operationValue)
-        break
+        this.updateScreen(operationValue);
+        break;
       case "DEL":
         this.processDelOperator();
         break;
-      case "CE":
+      case "AC":
         this.processClearCurrentOperator();
         break;
       case "C":
@@ -86,26 +85,34 @@ class Calculator {
   }
 
   // Change values of calculator screen
-  updateScreen(operationValue = null, operation = null, current = null, previous = null) {
-  if (operationValue === null) {
-    // Append number to current value
-    this.currentOperationText.innerText += this.currentOperation;
-  } else {
-    // Check if value is zero, if it is, just add the current value
-    if (previous === 0) {
-      operationValue = current;
-    }
-
-    // Adiciona o resultado imediatamente para o operador %
-    if (operation === "%" && operationValue !== null) {
-      this.currentOperationText.innerText = operationValue !== null ? operationValue : "";
+  updateScreen(
+    operationValue = "",
+    operation = null,
+    current = null,
+    previous = null
+  ) {
+    if (operationValue === "") {
+      // Append number to current value
+      this.currentOperationText.innerText += this.currentOperation;
     } else {
-      // Add current value to previous
-      this.previousOperationText.innerText = operationValue !== null ? `${operationValue} ${operation}` : "";
-      this.currentOperationText.innerText = operationValue !== null ? "" : this.currentOperationText.innerText;
+      // Check if value is zero, if it is, just add the current value
+      if (previous === 0) {
+        operationValue = current;
+      }
+
+      // Adiciona o resultado imediatamente para o operador %
+      if (operation === "%" && operationValue !== null) {
+        this.currentOperationText.innerText =
+          operationValue !== null ? operationValue : "";
+      } else {
+        // Add current value to previous
+        this.previousOperationText.innerText =
+          operationValue !== "" ? `${operationValue} ${operation}` : "";
+        this.currentOperationText.innerText =
+          operationValue !== "" ? "" : this.currentOperationText.innerText;
+      }
     }
   }
-}
 
   // Change math operation
   changeOperation(operation) {
@@ -136,21 +143,21 @@ class Calculator {
     this.previousOperationText.innerText = "";
   }
 
-  // Process an operation
-  // Process an operation
-processEqualOperator() {
-  let operationText = this.previousOperationText.innerText;
-  let operation = "";
+  processEqualOperator() {
+    let operationText = this.currentOperationText.innerText;
+    let operation = "";
 
-  if (operationText.includes(" ")) {
-    operation = operationText.split(" ")[1];
+    if (operationText.includes(" ")) {
+      operation = operationText.split(" ")[1];
+    }
+
+    if (["+", "-", "*", "/"].includes(operation)) {
+      this.processOperation(operation);
+      this.previousOperationText.innerText =
+        this.currentOperationText.innerText.split(" ")[0];
+    }
   }
-
-  this.processOperation(operation);
 }
-
-}
-
 
 const calc = new Calculator(previousOperationText, currentOperationText);
 
@@ -166,9 +173,8 @@ buttons.forEach((btn) => {
     if (+value >= 0 || value === ".") {
       console.log(value);
       calc.addDigit(value);
-    } else {
+    } else if (calc.currentOperationText.innerText.trim() !== "") {
       calc.processOperation(value);
-      // Adicionar a classe 'active' ao botão do operador
       calc.highlightOperatorButton(value);
     }
   });
