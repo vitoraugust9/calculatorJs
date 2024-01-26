@@ -13,6 +13,26 @@
       name="keywords"
       content="calculadora, operações matemáticas, matemática, calcular"
     />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="public/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="public/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="public/favicon-16x16.png"
+    />
+    <link rel="manifest" href="public/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,7 +56,8 @@
             id="toggle-theme"
             onclick="toggleTheme()"
             aria-label="Toggle Theme"
-          ><p class="none">toggle</p>
+          >
+            <p class="none">toggle</p>
             <img id="theme" src="./public/light.svg" alt="Theme Icon" />
           </button>
           <button tabindex="1" class="operator percent" aria-label="Percentage">
@@ -93,13 +114,18 @@
             class="clear-display button-gradient"
             onclick="toggleButton()"
             aria-label="Clear"
-          >C</button>
+          >
+            C
+          </button>
 
           <button
             tabindex="17"
             class="stop-operation button-gradient"
             onclick="toggleButton()"
-            aria-label="Clear All">AC</button>
+            aria-label="Clear All"
+          >
+            AC
+          </button>
 
           <button tabindex="18" class="number" aria-label="Number 0" value="0">
             0
