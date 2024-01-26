@@ -19,14 +19,19 @@ class Calculator {
   }
   // add digit to calculator screen
   addDigit(digit) {
-
-    if (digit === "." && this.currentOperationText.innerText.includes(".")) {
-      return;
-    }
-
-    this.currentOperation = digit;
-    this.updateScreen();
+  // Verificar se o comprimento atual excede 9 caracteres
+  if (this.currentOperationText.innerText.length >= 9) {
+    return; // Retorna se o limite for atingido
   }
+
+  if (digit === "." && this.currentOperationText.innerText.includes(".")) {
+    return;
+  }
+
+  this.currentOperation = digit; // Adicionar o dígito ao texto atual
+  this.updateScreen(); // Atualizar o visor
+}
+
 
   // process all calculator operations
   processOperation(operation) {
