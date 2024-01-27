@@ -13,26 +13,8 @@
       name="keywords"
       content="calculadora, operações matemáticas, matemática, calcular"
     />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="public/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="public/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="public/favicon-16x16.png"
-    />
-    <link rel="manifest" href="public/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#2d89ef" />
-    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
+    <link rel="icon" type="image/png" href="public/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,6 +24,10 @@
 
     <title>Calculator</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/241f9f1a46.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <main>
@@ -62,14 +48,16 @@
           </button>
           <button tabindex="1" class="operator percent" aria-label="Percentage">
             %
+            <img class="image-operator" src="public/percent.svg" alt="" />
           </button>
 
           <button tabindex="2" class="operator divide" aria-label="Divide">
             /
+            <img class="image-operator" src="public/divide.svg" alt="" />
           </button>
 
           <button tabindex="3" class="operator multiply" aria-label="Multiply">
-            *
+            *<img class="image-operator" src="public/multiply.svg" alt="" />
           </button>
 
           <button tabindex="4" class="number" aria-label="Number 7" value="7">
@@ -82,7 +70,7 @@
             9
           </button>
           <button tabindex="7" class="operator minus" aria-label="Subtraction">
-            -
+            -<img class="image-operator" src="public/minus.svg" alt="" />
           </button>
 
           <button tabindex="8" class="number" aria-label="Number 4" value="4">
@@ -95,7 +83,7 @@
             6
           </button>
           <button tabindex="11" class="operator addition" aria-label="Addition">
-            +
+            +<img class="image-operator" src="public/plus.svg" alt="" />
           </button>
 
           <button tabindex="12" class="number" aria-label="Number 1" value="1">
@@ -136,7 +124,6 @@
         </div>
       </div>
     </main>
-
     <script src="scripts/calculatorDynamics.js"></script>
     <script src="scripts/dynamicStyles.js"></script>
   </body>

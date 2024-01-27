@@ -43,22 +43,25 @@ body {
   justify-content: flex-end;
   font-weight: bold;
   font-size: 40px;
-  overflow-wrap: break-word;
-  width: 325px;
+  width: 85%;
   text-align: right;
+  overflow-wrap: break-word;
 }
 
 /* Estilos para o texto exibido */
 .displayed {
   margin-top: 8px;
   color: var(--text-color);
-  overflow-wrap: break-word;
+}
+
+#theme{
+  width: 70%; /* Garante que a imagem preencha todo o espaço do botão horizontalmente */
+  height: 70%; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
 }
 
 .previous-operation {
   color: #3d3d3b;
   font-size: 32px;
-  overflow-wrap: break-word;
 }
 
 /* Estilos para a seção de botões */
@@ -122,6 +125,25 @@ button {
   display: inline-block;
 }
 
+
+
+.image-operator {
+  display: block; /* Certifica-se de que a imagem é exibida como bloco */
+  width: 50%; /* Garante que a imagem preencha todo o espaço do botão horizontalmente */
+  height: 50%; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
+  pointer-events: none; /* Não permite que a imagem capture eventos do mouse, passando-os para o botão */
+  
+}
+
+
+
+
+.operator {
+  padding: 0; /* Remover o preenchimento padrão */
+  background-color: transparent; /* Para garantir que a cor de fundo padrão não interfira */
+  border: none; /* Remove a borda */
+  text-indent: -9999px; /* Move o texto para fora da tela */
+}
 /* Estilos para o botão de alternância de tema */
 
 #toggle-theme {
@@ -153,7 +175,6 @@ button {
   .display {
     max-height: 30vh;
     font-size: 28px;
-    width: 285px;
   }
 
   /* Estilos para o texto exibido */
@@ -220,12 +241,11 @@ button {
   }
   /* Estilos para a exibição (display) da calculadora */
   .display {
-    width: 280px;
     font-size: 20px;
   }
 
   .section-buttons {
-    max-width: 260px;
+    max-width: 265px;
     gap: 5px;
   }
 
@@ -249,9 +269,6 @@ button {
 @media screen and (max-height: 480px) {
   .calculator {
     max-width: 270px;
-  }
-  .display {
-    width: 250px;
   }
   .section-buttons {
     max-width: 240px;
@@ -324,7 +341,6 @@ button {
   /* Estilos para a exibição (display) da calculadora */
   .display {
     font-size: 70px;
-    width: 615px;
   }
 
   .previous-operation {
@@ -356,4 +372,67 @@ button {
   img{
     width: 50%;
   }
+
+
+
 }
+
+
+@media screen and (max-width:320px) {
+  .calculator {
+    width: 300px;
+  }
+
+  /* Estilos para a exibição (display) da calculadora */
+  .display {
+    font-size: 30px;
+    
+  }
+
+  .previous-operation {
+    color: #3d3d3b;
+    font-size: 25px;
+  }
+
+  /* Estilos para a seção de botões */
+  .section-buttons {
+    gap: 10px;
+    width: 270px;
+    margin-top: -10px;
+  }
+
+  /* Estilos para o botão de igualdade */
+  .equal {
+    min-height: 100px;
+  }
+  button {
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+  }
+  
+}
+
+
+@media screen and (max-width:412px) and (min-width:360px) {
+  .equal{
+    height: 130px;
+  }
+}
+
+
+
+@media screen and (width:320px) and (height:795px){
+   /* Estilos para o botão de igualdade */
+  .equal {
+    min-height: 140px;
+  }
+  button {
+    font-size: 35px;
+    width: 55px;
+    height: 55px;
+  }
+  
+  
+}
+

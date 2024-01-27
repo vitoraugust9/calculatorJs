@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="0" ry="0" fill="#ffffff"></rect><g transform="matrix(31.25,0,0,31.25,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="32" height="32"><svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<rect x="2" y="2" class="st0" width="28" height="28"></rect>
+<line class="st0" x1="16" y1="2" x2="16" y2="30"></line>
+<line class="st0" x1="2" y1="16" x2="30" y2="16"></line>
+<line class="st0" x1="9" y1="6" x2="9" y2="12"></line>
+<line class="st0" x1="6" y1="9" x2="12" y2="9"></line>
+<line class="st0" x1="6.9" y1="20.9" x2="11.1" y2="25.1"></line>
+<line class="st0" x1="6.9" y1="25.1" x2="11.1" y2="20.9"></line>
+<line class="st0" x1="20" y1="9" x2="26" y2="9"></line>
+<line class="st0" x1="20" y1="21" x2="26" y2="21"></line>
+<line class="st0" x1="20" y1="25" x2="26" y2="25"></line>
+</svg></svg></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><g transform="matrix(31.25,0,0,31.25,0,0)" style="filter: invert(100%)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="32" height="32"><svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve">
+	<style type="text/css">
+		.st0 { fill: #000000; } /* Cor do fundo preto */
+		.st1 { stroke: #ffffff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; } /* Cor das linhas brancas */
+	</style>
+	<rect x="2" y="2" class="st0" width="28" height="28"></rect> <!-- Fundo preto -->
+	<line class="st1" x1="16" y1="2" x2="16" y2="30"></line> <!-- Linha vertical -->
+	<line class="st1" x1="2" y1="16" x2="30" y2="16"></line> <!-- Linha horizontal -->
+	<line class="st1" x1="9" y1="6" x2="9" y2="12"></line> <!-- Linha vertical superior esquerda -->
+	<line class="st1" x1="6" y1="9" x2="12" y2="9"></line> <!-- Linha horizontal superior esquerda -->
+	<line class="st1" x1="6.9" y1="20.9" x2="11.1" y2="25.1"></line> <!-- Linha diagonal superior esquerda -->
+	<line class="st1" x1="6.9" y1="25.1" x2="11.1" y2="20.9"></line> <!-- Linha diagonal inferior esquerda -->
+	<line class="st1" x1="20" y1="9" x2="26" y2="9"></line> <!-- Linha horizontal superior direita -->
+	<line class="st1" x1="20" y1="21" x2="26" y2="21"></line> <!-- Linha horizontal inferior direita -->
+	<line class="st1" x1="20" y1="25" x2="26" y2="25"></line> <!-- Linha horizontal inferior direita -->
+	</svg></svg></g></svg></g></svg>
