@@ -37,19 +37,23 @@ defaultTheme.addEventListener("change", (e) => {
 
 function updateImagePath(theme) {
   const operatorImages = document.querySelectorAll(".image-operator");
-  operatorImages.forEach(image => {
-    const imageName = image.src.split("/").pop(); // Get the image name
+  operatorImages.forEach((image) => {
+    const imageName = image.src.split("/").pop();
     const isDarkImage = imageName.endsWith("-dark.svg");
 
-    if ((theme === "light" && isDarkImage) || (theme === "dark" && !isDarkImage)) {
-      return; // Imagem já corresponde ao tema, não há necessidade de alterar
+    if (
+      (theme === "light" && isDarkImage) ||
+      (theme === "dark" && !isDarkImage)
+    ) {
+      return;
     }
-    
-    const imagePath = isDarkImage ? imageName.replace("-dark.svg", ".svg") : imageName.replace(".svg", "-dark.svg");
+
+    const imagePath = isDarkImage
+      ? imageName.replace("-dark.svg", ".svg")
+      : imageName.replace(".svg", "-dark.svg");
     image.src = `./public/${imagePath}`;
   });
 }
-
 
 function setLightTheme() {
   document.documentElement.style.setProperty("--calculator-color", "#ffffff");
@@ -61,8 +65,7 @@ function setLightTheme() {
   document.documentElement.style.setProperty("--text-color", "#000");
   document.documentElement.style.setProperty("--button-color", "#e9e9e9");
   document.documentElement.style.setProperty("--toggle-color", "#e9e9e9");
-  document.documentElement.style.setProperty('--operator-active', '#cfcfcf')
-
+  document.documentElement.style.setProperty("--operator-active", "#cfcfcf");
 }
 
 function setDarkTheme() {
@@ -75,6 +78,5 @@ function setDarkTheme() {
   document.documentElement.style.setProperty("--text-color", "#fff");
   document.documentElement.style.setProperty("--button-color", "#323438");
   document.documentElement.style.setProperty("--toggle-color", "#323438");
-  document.documentElement.style.setProperty('--operator-active', "#1a1c1f")
+  document.documentElement.style.setProperty("--operator-active", "#1a1c1f");
 }
-

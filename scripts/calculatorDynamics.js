@@ -6,220 +6,139 @@ class Calculator {
   constructor(previousOperationText, currentOperationText) {
     this.previousOperationText = previousOperationText;
     this.currentOperationText = currentOperationText;
+    this.clearAll();
+  }
+
+  clearAll() {
     this.currentOperation = "";
+    this.previousOperation = "";
+    this.operation = undefined;
+    this.readyForNewInput = false;
+    this.updateDisplay();
   }
 
-  highlightOperatorButton(operator) {
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
-      if (btn.innerText === operator) {
-        btn.classList.add("active");
-      }
-    });
-  }
-  // add digit to calculator screen
-  addDigit(digit) {
-  // Verificar se o comprimento atual excede 9 caracteres
-  if (this.currentOperationText.innerText.length >= 9) {
-    return; // Retorna se o limite for atingido
+  delete() {
+    this.currentOperation = this.currentOperation.toString().slice(0, -1);
+    this.updateDisplay();
   }
 
-  if (digit === "." && this.currentOperationText.innerText.includes(".")) {
-    return;
+  appendNumber(number) {
+    if (this.readyForNewInput) return;
+    if (number === "." && this.currentOperation.includes(".")) return;
+    if (this.currentOperation.length > 9) return;
+    this.currentOperation = `${this.currentOperation}${number.toString()}`;
+    this.updateDisplay();
   }
 
-  this.currentOperation = digit; // Adicionar o dígito ao texto atual
-  this.updateScreen(); // Atualizar o visor
-}
-
-
-  // process all calculator operations
-  processOperation(operation) {
-  // Check if current value is empty
-  if (this.currentOperationText.innerText === "" && operation !== "C") {
-    // Change operation
-    if (this.previousOperationText.innerText !== "") {
-      this.changeOperation(operation);
+  chooseOperation(operation) {
+    if (this.currentOperation === "") return;
+    if (operation === "%" && this.currentOperation !== "") {
+      this.computePercentage();
+      return;
     }
-    return;
+    if (this.previousOperation !== "") {
+      this.compute();
+    }
+    this.operation = operation;
+    this.previousOperation = this.currentOperation;
+    this.currentOperation = "";
+    this.readyForNewInput = false;
+    this.updateDisplay();
   }
 
-  // Get current and previous values
-  let operationValue;
-  let previous = +this.previousOperationText.innerText.split(" ")[0];
-  let current = +this.currentOperationText.innerText;
+  computePercentage() {
+    const current = parseFloat(this.currentOperation);
+    if (isNaN(current)) return;
+    this.currentOperation = (current / 100).toString();
+    this.operation = undefined;
+    this.previousOperation = "";
+    this.readyForNewInput = true;
+    this.updateDisplay();
+  }
 
-  switch (operation) {
-    case "+":
-      operationValue = previous + current;
-      this.updateScreen(operationValue, operation, current, previous);
-      break;
-    case "-":
-      operationValue = previous - current;
-      this.updateScreen(operationValue, operation, current, previous);
-      break;
-    case "*":
-      operationValue = previous * current;
-      this.updateScreen(operationValue, operation, current, previous);
-      break;
-    case "/":
-      operationValue = previous / current;
-      this.updateScreen(operationValue, operation, current, previous);
-      break;
-      case "%":
-        operationValue = current / 100;
-        this.currentOperationText.innerText = operationValue;
-
+  compute() {
+    let computation;
+    const prev = parseFloat(this.previousOperation);
+    const current = parseFloat(this.currentOperation);
+    if (isNaN(prev) || isNaN(current)) return;
+    switch (this.operation) {
+      case "+":
+        computation = prev + current;
         break;
-    case "DEL":
-      this.processDelOperator();
-      break;
-    case "AC":
-      this.processClearCurrentOperator();
-      break;
-    case "C":
-      this.processClearOperator();
-      break;
-    case "=":
-      this.processEqualOperator();
-      break;
-    default:
-      return;
-  }
-}
-
-  // Change values of calculator screen
-  updateScreen(
-    operationValue = "",
-    operation = "",
-    current = "",
-    previous = ""
-  ) {
-    // Verificar se algum parâmetro é null ou NaN
-    if (
-      operationValue === null ||
-      isNaN(operationValue) ||
-      operation === null ||
-      current === null ||
-      previous === null ||
-      isNaN(current) ||
-      isNaN(previous)
-    ) {
-      // Se qualquer parâmetro for null ou NaN, não faça nada
-      return;
+      case "-":
+        computation = prev - current;
+        break;
+      case "*":
+        computation = prev * current;
+        break;
+      case "/":
+        computation = prev / current;
+        break;
+      case "%":
+        computation = prev / 100;
+        break;
+      default:
+        return;
     }
-  
-    if (operationValue === "") {
-      // Append number to current value
-      this.currentOperationText.innerText += this.currentOperation;
-    } else {
-      // Check if value is zero, if it is, just add the current value
-      if (previous === 0) {
-        operationValue = current;
-      }
-  
-      // Adiciona o resultado imediatamente para o operador %
-      if (operation === "%" && operationValue !== null) {
-        this.currentOperationText.innerText =
-          operationValue !== null ? operationValue : "";
-      } else {
-        // Add current value to previous
-        this.previousOperationText.innerText =
-          operationValue !== "" ? `${operationValue} ${operation}` : "";
-        this.currentOperationText.innerText =
-          operationValue !== "" ? "" : this.currentOperationText.innerText;
-      }
-    }
+    this.currentOperation = computation;
+    this.operation = undefined;
+    this.previousOperation = "";
+    this.readyForNewInput = true;
+    this.updateDisplay();
   }
 
-  // Change math operation
-  changeOperation(operation) {
-    const mathOperations = ["*", "-", "+", "/", "%"];
-
-    if (!mathOperations.includes(operation)) {
-      return;
-    }
-
+  updateDisplay() {
+    this.currentOperationText.innerText = this.currentOperation;
     this.previousOperationText.innerText =
-      this.previousOperationText.innerText.slice(0, -1) + operation;
+      this.previousOperation + " " + (this.operation || "");
   }
-
-
-  // Clear current operation
-  processClearCurrentOperator() {
-    this.currentOperationText.innerText = "";
-  }
-
-  // Clear all operations
-  processClearOperator() {
-    this.currentOperationText.innerText = "";
-    this.previousOperationText.innerText = "";
-  }
-
-  processEqualOperator() {
-    let operationText = this.previousOperationText.innerText;
-    let operation = "";
-
-    if (operationText.includes(" ")) {
-        operation = operationText.split(" ")[1];
-    }
-
-    if (["+", "-", "*", "/"].includes(operation)) {
-        this.processOperation(operation);
-        this.currentOperationText.innerText = this.previousOperationText.innerText.split(" ")[0];
-        this.previousOperationText.innerText = ""; // Limpa a classe .previous-operation
-    }
 }
-}
-
-const calc = new Calculator(previousOperationText, currentOperationText);
-
-
-
 
 function toggleButton() {
-  const stopOperationButton = document.querySelector('.stop-operation');
-  const clearDisplayButton = document.querySelector('.clear-display');
+  const stopOperationButton = document.querySelector(".stop-operation");
+  const clearDisplayButton = document.querySelector(".clear-display");
 
-  const isPreviousEmpty = calc.previousOperationText.innerText === '';
-  const isCurrentEmpty = calc.currentOperationText.innerText === '';
+  const isPreviousEmpty = calculator.previousOperation === "";
+  const isCurrentEmpty = calculator.currentOperation === "";
 
-  if (isPreviousEmpty && isCurrentEmpty) {
-    stopOperationButton.style.display = 'block';
-    clearDisplayButton.style.display = 'none';
+  if (!isPreviousEmpty || !isCurrentEmpty) {
+    stopOperationButton.style.display = "none";
+    clearDisplayButton.style.display = "block";
   } else {
-    stopOperationButton.style.display = 'none';
-    clearDisplayButton.style.display = 'block';
+    stopOperationButton.style.display = "block";
+    clearDisplayButton.style.display = "none";
   }
 }
 
-// Event listener loop
-buttons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const value = e.target.innerText;
+const calculator = new Calculator(previousOperationText, currentOperationText);
 
-    // Remove the 'active' class from all buttons before highlighting the operator button
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
-    });
+toggleButton();
 
-    if (+value >= 0 || value === ".") {
-      calc.addDigit(value);
-    } else if (value === "%") {
-      // Perform the operation for the "%" button
-      calc.processOperation(value);
-
-      // Remove the 'active' class from the "%" button
-      btn.classList.remove("active");
-    } else {
-      // Perform the operation for other operators
-      calc.processOperation(value);
-
-      // Add the 'active' class to the operator button
-      calc.highlightOperatorButton(value);
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    switch (button.innerText) {
+      case "C":
+      case "AC":
+        calculator.clearAll();
+        break;
+      case "DEL":
+        calculator.delete();
+        break;
+      case "=":
+        calculator.compute();
+        break;
+      case "+":
+      case "-":
+      case "*":
+      case "/":
+      case "%":
+        calculator.chooseOperation(button.innerText);
+        break;
+      default:
+        calculator.appendNumber(button.innerText);
+        break;
     }
 
-    // Call toggleButton after processing the button click
     toggleButton();
   });
 });

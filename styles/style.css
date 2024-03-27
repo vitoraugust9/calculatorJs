@@ -1,4 +1,3 @@
-/* Definição de variáveis de tema */
 :root {
   --calculator-color: #ffffff;
   --buttons-section-bg-color: #f5f5f5;
@@ -12,83 +11,83 @@
 .none {
   display: none;
 }
-/* Estilo global para o corpo do documento */
+
 body {
   margin: 0;
   display: flex;
   height: 100vh;
+  width: 100vw;
   font-family: sans-serif;
   justify-content: center;
   align-items: center;
   background-color: var(--bg-color);
 }
 
-/* Estilos para a calculadora */
+*:focus {
+  outline: none;
+}
+
 .calculator {
-  min-height: 80vh;
-  width: 350px;
+  height: 80vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--calculator-color);
-  border-radius: 10px;
+  border-radius: 1em;
 }
 
-/* Estilos para a exibição (display) da calculadora */
 .display {
-  min-height: 30vh;
+  height: 30vh;
+  width: 85%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   font-weight: bold;
-  font-size: 40px;
-  width: 85%;
+  font-size: 2.5em;
   text-align: right;
   overflow-wrap: break-word;
 }
 
-/* Estilos para o texto exibido */
 .displayed {
-  margin-top: 8px;
+  margin-top: 0.5em;
   color: var(--text-color);
 }
 
-#theme{
-  width: 70%; /* Garante que a imagem preencha todo o espaço do botão horizontalmente */
-  height: 70%; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
+#theme {
+  width: 70vw;
+  height: 4.5vh;
 }
 
 .previous-operation {
-  color: #3d3d3b;
-  font-size: 32px;
+  color: #4b4b46;
+  font-size: 1em;
 }
 
-/* Estilos para a seção de botões */
 .section-buttons {
-  min-height: 50vh;
+  height: 65%;
+  width: 92%;
   display: grid;
   background-color: var(--buttons-section-bg-color);
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: 15px;
-  border-top-right-radius: 40px;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 15px;
-  width: 320px;
+  gap: 1em;
+  border-top-right-radius: 2.5em;
+  border-top-left-radius: 2.5em;
+  border-bottom-left-radius: 0.625em;
+  border-bottom-right-radius: 0.625em;
+  padding: 1em;
 }
 
-/* Estilos para os botões */
 button {
   font-family: "PT Sans", sans-serif;
   font-style: normal;
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  font-weight: 700;
-  font-size: 30px;
+  font-weight: bold;
+  font-size: 2em;
   color: var(--text-color);
   background-color: transparent;
   border: none;
@@ -98,10 +97,9 @@ button {
   justify-content: center;
 }
 
-/* Estilos para o botão de igualdade */
 .equal {
   grid-row: span 2;
-  max-height: 180px;
+  height: 5em;
   border-radius: 50px;
   background: linear-gradient(
     to bottom,
@@ -115,7 +113,6 @@ button {
   background-color: var(--operator-active) !important;
 }
 
-/* Estilos para o texto gradiente em botões */
 .button-gradient {
   background: linear-gradient(to right, #fb4d3f, #ef1989);
   color: transparent;
@@ -125,314 +122,35 @@ button {
   display: inline-block;
 }
 
-
-
 .image-operator {
-  display: block; /* Certifica-se de que a imagem é exibida como bloco */
-  width: 50%; /* Garante que a imagem preencha todo o espaço do botão horizontalmente */
-  height: 50%; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
-  pointer-events: none; /* Não permite que a imagem capture eventos do mouse, passando-os para o botão */
-  
+  display: block;
+  width: 50%;
+  height: 50%;
+  pointer-events: none;
 }
-
-
-
 
 .operator {
-  padding: 0; /* Remover o preenchimento padrão */
-  background-color: transparent; /* Para garantir que a cor de fundo padrão não interfira */
-  border: none; /* Remove a borda */
-  text-indent: -9999px; /* Move o texto para fora da tela */
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  text-indent: -9999px;
 }
-/* Estilos para o botão de alternância de tema */
+
 
 #toggle-theme {
   border: solid var(--toggle-color);
 }
 
-/* Estilos para operadores */
+
 .operator {
   background-color: var(--button-color);
 }
 
-/* Estilo para elemento de parada de operação - não utilizado no HTML fornecido */
-.stop-operation {
-  display: block;
+.stop-operation{
+  display: none;
+  align-items: center;
 }
 
-/* Estilo para limpar a exibição - não utilizado no HTML fornecido */
-.clear-display {
+.clear-operation{
   display: none;
 }
-
-@media screen and (max-height: 768px) {
-  .calculator {
-    max-height: 80vh;
-    width: 310px;
-  }
-
-  /* Estilos para a exibição (display) da calculadora */
-  .display {
-    max-height: 30vh;
-    font-size: 28px;
-  }
-
-  /* Estilos para o texto exibido */
-  .displayed {
-    margin-top: 5px;
-    color: var(--text-color);
-  }
-
-  .previous-operation {
-    color: #3d3d3b;
-    font-size: 20px;
-  }
-
-  /* Estilos para a seção de botões */
-  .section-buttons {
-    max-width: 280px;
-    max-height: 15vh;
-    gap: 10px;
-    padding: 15px;
-  }
-
-  /* Estilos para os botões */
-  button {
-    width: 62px;
-    height: 62px;
-    font-size: 25px;
-  }
-
-  .equal {
-    min-height: 130px;
-  }
-}
-
-@media screen and (min-height: 736px) {
-  .equal {
-    max-height: 190px;
-    min-height: 160px;
-  }
-}
-
-@media screen and (max-height: 658px) {
-  .section-buttons {
-    max-width: 260px;
-    gap: 5px;
-  }
-
-  /* Estilos para os botões */
-  button {
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-height: 568px) {
-  .calculator {
-    max-height: 80vh;
-    width: 290px;
-  }
-  .previous-operation {
-    color: #3d3d3b;
-    font-size: 20px;
-    overflow-wrap: break-word;
-  }
-  /* Estilos para a exibição (display) da calculadora */
-  .display {
-    font-size: 20px;
-  }
-
-  .section-buttons {
-    max-width: 265px;
-    gap: 5px;
-  }
-
-  /* Estilos para os botões */
-  button {
-    width: 55px;
-    height: 55px;
-  }
-
-  .equal {
-    min-height: 100px;
-  }
-}
-
-@media screen and (height: 568px) {
-  .equal {
-    min-height: 115px;
-  }
-}
-
-@media screen and (max-height: 480px) {
-  .calculator {
-    max-width: 270px;
-  }
-  .section-buttons {
-    max-width: 240px;
-  }
-  button {
-    width: 48px;
-    height: 48px;
-  }
-
-  .equal {
-    min-height: 95px;
-  }
-}
-
-@media screen and (max-height: 658px) and (min-height: 569px) {
-  .calculator {
-    max-width: 290px;
-  }
-
-  .section-buttons {
-    gap: 8px;
-  }
-  button {
-    width: 55px;
-    height: 55px;
-    font-size: 22px;
-  }
-
-  .equal {
-    min-height: 110px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .calculator {
-    width: 400px;
-  }
-
-  /* Estilos para a exibição (display) da calculadora */
-  .display {
-    font-size: 50px;
-  }
-
-  .previous-operation {
-    color: #3d3d3b;
-    font-size: 40px;
-    overflow-wrap: break-word;
-  }
-
-  /* Estilos para a seção de botões */
-  .section-buttons {
-    gap: 20px;
-    width: 368px;
-  }
-
-  /* Estilos para o botão de igualdade */
-  .equal {
-    min-height: 180px;
-  }
-  button {
-    font-size: 40px;
-  }
-}
-
-@media screen and (max-width: 2560px) and (min-width: 2000px) {
-  .calculator {
-    width: 700px;
-  }
-
-  /* Estilos para a exibição (display) da calculadora */
-  .display {
-    font-size: 70px;
-  }
-
-  .previous-operation {
-    color: #3d3d3b;
-    font-size: 60px;
-    overflow-wrap: break-word;
-  }
-
-  /* Estilos para a seção de botões */
-  .section-buttons {
-    gap: 20px;
-    width: 668px;
-  }
-
-  /* Estilos para o botão de igualdade */
-
-  button {
-    font-size: 70px;
-    width: 150px;
-    height: 150px;
-  }
-
-
-  .equal {
-    min-height: 300px;
-    border-radius: 80px;
-  }
-
-  img{
-    width: 50%;
-  }
-
-
-
-}
-
-
-@media screen and (max-width:320px) {
-  .calculator {
-    width: 300px;
-  }
-
-  /* Estilos para a exibição (display) da calculadora */
-  .display {
-    font-size: 30px;
-    
-  }
-
-  .previous-operation {
-    color: #3d3d3b;
-    font-size: 25px;
-  }
-
-  /* Estilos para a seção de botões */
-  .section-buttons {
-    gap: 10px;
-    width: 270px;
-    margin-top: -10px;
-  }
-
-  /* Estilos para o botão de igualdade */
-  .equal {
-    min-height: 100px;
-  }
-  button {
-    font-size: 25px;
-    width: 40px;
-    height: 40px;
-  }
-  
-}
-
-
-@media screen and (max-width:412px) and (min-width:360px) {
-  .equal{
-    height: 130px;
-  }
-}
-
-
-
-@media screen and (width:320px) and (height:795px){
-   /* Estilos para o botão de igualdade */
-  .equal {
-    min-height: 140px;
-  }
-  button {
-    font-size: 35px;
-    width: 55px;
-    height: 55px;
-  }
-  
-  
-}
-
